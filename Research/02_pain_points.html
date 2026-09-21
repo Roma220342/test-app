@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where to Shoot — Wonderline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F6F8;--surface:#FFFFFF;--border:#E6E6EA;--ink:#141417;--muted:#6B6B73;
+  --primary:#141417;--primary-muted:#3A3A40;--tint:#F0F0F3;
+  --accent:#E11B22;--accent-pale:#FCEBEC;--accent-dark:#B3141B;--danger:#C0392B;--success:#1E9E62;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;font-size:16px}
+.wrap{max-width:880px;margin:0 auto;padding:56px 24px 90px}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-dark);font-weight:600}
+h1{font-size:34px;line-height:1.12;letter-spacing:-.5px;margin:12px 0 6px;color:var(--primary)}
+.lede{font-size:18px;color:var(--muted);max-width:660px;margin:0 0 36px}
+h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:50px 0 16px;padding-bottom:9px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+h2 .n{font-family:'IBM Plex Mono',monospace;background:var(--accent);color:#fff;border-radius:6px;padding:2px 7px;font-size:11px}
+p{margin:10px 0} b{color:var(--primary-muted)} .mono{font-family:'IBM Plex Mono',monospace}
+.target{background:var(--primary);color:#EDEEEB;border-radius:20px;padding:32px 34px;position:relative;overflow:hidden}
+.target::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(225,27,34,.35),transparent 70%)}
+.target .tag{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:5px 13px;margin-bottom:14px}
+.target h3{font-size:24px;line-height:1.22;margin:0 0 10px;color:#fff;position:relative}
+.target p{color:#C9CCC5;font-size:16px;position:relative;margin:8px 0}
+.target .win{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);position:relative}
+.target .win b{color:#ff8b8f}
+.bullseye{display:flex;gap:28px;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px 30px;margin:18px 0}
+.rings{width:168px;height:168px;position:relative;flex:0 0 168px;margin:0 auto}
+.ring{position:absolute;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:flex-end;justify-content:center;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding-bottom:6px;text-align:center}
+.r1{width:168px;height:168px;background:var(--tint);color:var(--muted)}
+.r2{width:112px;height:112px;background:var(--accent-pale);color:var(--accent-dark)}
+.r3{width:58px;height:58px;background:var(--accent);color:#fff;border:2px solid var(--primary);align-items:center;padding:0}
+.legend{flex:1;min-width:230px;margin:0;padding:0}
+.legend li{margin:9px 0;list-style:none;padding-left:22px;position:relative;font-size:14.5px}
+.legend li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:12px;border-radius:50%}
+.legend .l3::before{background:var(--accent);border:2px solid var(--primary)}
+.legend .l2::before{background:var(--accent-pale);border:1px solid var(--accent)}
+.legend .l1::before{background:var(--tint);border:1px solid var(--border)}
+.pain{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:14px 0;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.pri{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:7px;white-space:nowrap}
+.p-hi{background:var(--danger);color:#fff} .p-med{background:var(--accent-pale);color:var(--accent-dark)}
+.pain h4{margin:0 0 4px;font-size:17px;color:var(--primary)}
+.pain .ev{font-size:13px;color:var(--muted);font-style:italic;margin-top:8px}
+.pain .fix{font-size:13.5px;color:var(--success);font-weight:600;margin-top:8px}
+.pain .fix::before{content:"→ "}
+.callout{background:var(--tint);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin:22px 0}
+.callout h3{margin:0 0 8px;font-size:16px;color:var(--primary)}
+.foot{margin-top:46px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:600px){.wrap{padding:40px 18px 70px}h1{font-size:27px}.pain{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">WONDERLINE · LOD — Where to shoot</div>
+  <h1>The one pain point that wins the trial</h1>
+  <p class="lede">Everything the client cares about collides on a single screen. Hit it and the free trial converts into a longer engagement.</p>
+
+  <div class="target">
+    <span class="tag">◎ Aim here</span>
+    <h3>The Campaign / Offer Configuration wizard — made effortless for a non-technical marketer.</h3>
+    <p>It is where <b style="color:#fff">high configuration complexity</b> (segments, triggers, benefits, validity, award rules) meets <b style="color:#fff">non-technical marketers who must self-serve without IT</b>. It is also their <b style="color:#fff">flagship demo feature</b> — and the exact flow both sides agreed as the trial task.</p>
+    <div class="win"><b>Won when:</b> a marketer with no IT support can create a real offer end-to-end, the screen looks modern and enterprise-credible, and an advanced mode still holds the complex Shell cases. That is the client's stated success test, on the surface they show prospects.</div>
+  </div>
+
+  <h2><span class="n">01</span> Why this, above everything else</h2>
+  <div class="bullseye">
+    <div class="rings">
+      <div class="ring r1">Company positioning</div>
+      <div class="ring r2">Non-tech UX</div>
+      <div class="ring r3">Wizard</div>
+    </div>
+    <ul class="legend">
+      <li class="l3"><b>Bullseye — the campaign/offer wizard.</b> One flow that proves we can make their most complex, most-demoed screen simple. Small enough for a 3–5 day trial, central enough to matter.</li>
+      <li class="l2"><b>Middle ring — usable by non-technical marketers.</b> The client's repeated ask: <span class="mono">"marketing people without IT support."</span> The wizard is where that promise is kept or broken.</li>
+      <li class="l1"><b>Outer ring — market-ready positioning.</b> "Doesn't look 20 years old"; signals a serious platform. The wizard is the first proof point a prospect sees.</li>
+    </ul>
+  </div>
+  <p>Three independent signals point to the same target: the client named it as their <b>flagship feature</b> [19:58], both sides <b>agreed it as the trial task</b> [39:51–39:53], and it's where the two forces they most want fixed — complexity + non-technical users — actually meet. It's also, notably, ambiguous even to <em>Wonderline's own staff</em> — strong evidence the win is <b>clarity</b>, not just a fresh coat of paint.</p>
+  <div class="callout">
+    <h3>The reframe to lead with</h3>
+    <p>The wizard's <b>information architecture is already good</b> — a 5-step stepper (Target → Trigger → Validity → Benefit → Offer Details), a live Offer Summary rail, and an "Advanced Setup" escape hatch. So don't sell "we'll rebuild your flow." Sell <b>"we'll make the flow you already have feel calm, modern, and self-explanatory"</b> — restyling, interaction polish, plain language, and live feedback. Lower risk for them, faster for us, mindful of the Java + limited design system constraint.</p>
+  </div>
+
+  <h2><span class="n">02</span> Secondary pain points (address in the trial where cheap; name the rest)</h2>
+
+  <div class="pain">
+    <span class="pri p-hi">HIGH</span>
+    <div>
+      <h4>Red means everything → selected looks like an error</h4>
+      <p>In the live tool, brand red is the CTA, the selected-card state, the validation border <em>and</em> the error colour. A chosen option renders in alarm-red. It makes a functional flow feel broken and stressful.</p>
+      <p class="ev">Evidence: screen inventory — every wizard step shows selected cards with heavy red border + pink fill (Target, Trigger, Benefit).</p>
+      <p class="fix">Split brand red (CTA/active only) from a calm "selected" treatment and a distinct semantic error. Biggest visible-calm win for the least effort — do it in the trial.</p>
+    </div>
+  </div>
+
+  <div class="pain">
+    <span class="pri p-hi">HIGH</span>
+    <div>
+      <h4>No live audience feedback in the flow</h4>
+      <p>You can't see how many customers a segment reaches until you click "Display Segment" (a modal / full stop). Marketers fly blind while targeting. Their own AI mockup already shows the fix — an "87,220 customers matching" breakdown — they just haven't built it in-flow.</p>
+      <p class="ev">Evidence: <span class="mono">mockup_segment_breakdown.png</span> vs the live Target step; competitor benchmark — Klaviyo/Braze show live segment size as you build.</p>
+      <p class="fix">Bring a live estimated-reach count inline into the Target step (sampled estimate at 9M scale). High "wow" in a demo — worth prototyping in the trial.</p>
+    </div>
+  </div>
+
+  <div class="pain">
+    <span class="pri p-hi">HIGH</span>
+    <div>
+      <h4>Concepts are unclear even to Wonderline's own team</h4>
+      <p>On the call, staff couldn't explain their own controls: <span class="mono">"why do you need to select award role here? — it's a good question"</span> [44:28]; validity vs price-validity confusion [45:55]; campaign vs "test campaign" [47:49]. If the makers hesitate, a marketer has no chance.</p>
+      <p class="ev">Evidence: transcript [44:28], [45:55], [47:49]. Escalate the domain truth to the business analyst on the next call.</p>
+      <p class="fix">Plain-language labels, inline helper text, and sensible defaults. Requires analyst input — flag as a dependency, resolve on 16 Sep.</p>
+    </div>
+  </div>
+
+  <div class="pain">
+    <span class="pri p-med">MED</span>
+    <div>
+      <h4>~50-item, jargon-heavy left navigation</h4>
+      <p>The menu overwhelms: ~18 items under "Rewards" alone, with internal names like "C/V Definitions", "Beacon Map", "Engagewave", "CFlow". Alex: <span class="mono">"there are so many different thing… it can be a little bit overwhelming"</span> [37:16].</p>
+      <p class="ev">Evidence: screen inventory (nav enumeration); transcript [37:16–37:37].</p>
+      <p class="fix">Out of trial scope to fix fully, but show a <b>grouped, plain-language nav concept</b> as a "here's where this goes next" teaser. Signals the bigger redesign without over-committing.</p>
+    </div>
+  </div>
+
+  <div class="pain">
+    <span class="pri p-med">MED</span>
+    <div>
+      <h4>Simple vs advanced isn't cleanly separated</h4>
+      <p>Complex Shell offers have many rules; they want power kept but not in the marketer's face: <span class="mono">"keep it as an advanced mode… if anybody wants to go into details"</span> [48:34].</p>
+      <p class="ev">Evidence: transcript [48:16–48:48]; the "Go to Advanced Setup" button already exists.</p>
+      <p class="fix">Design the basic ↔ advanced handoff explicitly (state carries over). Show the pattern in the trial; it's the differentiator vs Comarch's "powerful but complex" reputation.</p>
+    </div>
+  </div>
+
+  <div class="pain">
+    <span class="pri p-med">MED</span>
+    <div>
+      <h4>Cramped, unlabelled controls</h4>
+      <p>Criteria + unit + product group + a bare gear icon pile into one tight row; expand-in-place sections feel dense. Small stuff, but it's the texture that reads "old."</p>
+      <p class="ev">Evidence: <span class="mono">real_wizard_trigger_product.png</span>, <span class="mono">real_wizard_benefit.png</span>.</p>
+      <p class="fix">Spacing, grouping, labelled affordances, consistent field sizing. Cheap, and it's what makes screenshots look modern.</p>
+    </div>
+  </div>
+
+  <h2><span class="n">03</span> How to present it on the next call</h2>
+  <div class="callout">
+    <p><b>Open with the reframe, not the redesign.</b> "Your flow is structurally sound — here's how we make it <em>feel</em> as capable as it is." That respects the work their team already did (they're sensitive about it) and lowers perceived risk.</p>
+    <p><b>Lead the demo with two moves that photograph well:</b> (1) the calm colour system — selected no longer looks like an error; (2) live audience reach in the Target step. Both are instantly legible in a prospect demo.</p>
+    <p><b>Name the bigger prizes without scope-creeping the trial:</b> the nav restructure and the basic/advanced handoff — as "the direction after the trial," aligned with the incoming rebrand.</p>
+    <p><b>Bring your open questions to the analyst</b> (award rule, validity semantics, test vs real campaign). Asking sharp domain questions signals you take their complexity seriously — which is exactly the "simple but handles complex environments" story they're buying.</p>
+  </div>
+
+  <div class="foot">Sources: dossier §00 Brief, §01 Discovery, §03 Personas &amp; Pain Points, §04 Screen Inventory, §05 Competitors, §06 UX Patterns. Quotes are verbatim from the 2026-09-09 call transcript with timestamps.</div>
+</div>
+</body>
+</html>

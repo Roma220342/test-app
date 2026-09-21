@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research at a Glance — Wonderline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F6F8;--surface:#FFFFFF;--border:#E6E6EA;--ink:#141417;--muted:#6B6B73;
+  --primary:#141417;--primary-muted:#3A3A40;--tint:#F0F0F3;
+  --accent:#E11B22;--accent-pale:#FCEBEC;--accent-dark:#B3141B;--danger:#C0392B;--success:#1E9E62;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;font-size:16px}
+.wrap{max-width:880px;margin:0 auto;padding:56px 24px 90px}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-dark);font-weight:600}
+h1{font-size:34px;line-height:1.12;letter-spacing:-.5px;margin:12px 0 6px;color:var(--primary)}
+.lede{font-size:18px;color:var(--muted);max-width:660px;margin:0 0 30px}
+h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:46px 0 16px;padding-bottom:9px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+h2 .n{font-family:'IBM Plex Mono',monospace;background:var(--accent);color:#fff;border-radius:6px;padding:2px 7px;font-size:11px}
+p{margin:10px 0} b{color:var(--primary-muted)} .mono{font-family:'IBM Plex Mono',monospace}
+.tldr{background:var(--primary);color:#EDEEEB;border-radius:16px;padding:22px 26px}
+.tldr b{color:#fff}
+.tldr .big{color:#ff8b8f;font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0}
+.fact{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 15px}
+.fact .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fact .v{font-size:18px;font-weight:600;color:var(--primary);margin-top:3px;line-height:1.2}
+.fact .s{font-size:11.5px;color:var(--muted);margin-top:2px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px 19px}
+.card h3{margin:0 0 4px;font-size:16px;color:var(--primary)}
+.card .rl{font-size:11.5px;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace}
+.card ul{margin:8px 0 0;padding-left:18px} .card li{margin:5px 0;font-size:13.5px}
+.loop{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0}
+.loop .n{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:8px 12px;font-size:13px;font-weight:500}
+.loop .n b{color:var(--accent-dark);font-family:'IBM Plex Mono',monospace;font-size:11px;margin-right:5px}
+.loop .ar{color:var(--accent);font-weight:700}
+.loop .dark{background:var(--primary);color:#EDEEEB;border-color:var(--primary)} .loop .dark b{color:#ff8b8f}
+.cmp{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px;background:var(--surface)}
+.cmp th,.cmp td{border:1px solid var(--border);padding:7px 9px;text-align:center;vertical-align:top}
+.cmp th{background:var(--primary);color:#fff;font-weight:500}
+.cmp td:first-child,.cmp th:first-child{text-align:left;color:var(--primary);font-weight:500}
+.yes{color:var(--success);font-weight:700} .no{color:#c9b8b3} .part{color:var(--accent-dark)}
+.rowus td{background:var(--accent-pale)} .rowus td:first-child{color:var(--accent-dark);font-weight:700}
+.steal{list-style:none;padding:0;margin:0}
+.steal li{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:12px 15px;margin:8px 0;font-size:14px}
+.steal li b{color:var(--primary)} .steal li .src{color:var(--muted);font-size:12px}
+.pal{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.sw{border:1px solid rgba(0,0,0,.08);border-radius:9px;overflow:hidden;width:104px}
+.sw .c{height:40px} .sw .l{font-size:10px;padding:5px 7px;background:var(--surface)}
+.sw .l b{display:block;color:var(--ink)} .sw .l .h{font-family:'IBM Plex Mono',monospace;color:var(--muted)}
+.princ{counter-reset:p;list-style:none;padding:0;margin:0}
+.princ li{position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--border);font-size:15px}
+.princ li::before{counter-increment:p;content:counter(p);position:absolute;left:0;top:9px;width:26px;height:26px;background:var(--accent);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px}
+.dont{background:var(--danger);color:#fff;border-radius:12px;padding:14px 18px;margin:14px 0;font-size:14.5px}
+.dont b{color:#ffe0dd}
+.foot{margin-top:44px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:600px){.wrap{padding:40px 18px 70px}h1{font-size:27px}.facts{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}.cmp{font-size:11.5px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">WONDERLINE · LOD — Research, condensed</div>
+  <h1>Everything useful, no water</h1>
+  <p class="lede">The whole discovery pass on one page — for when you don't have time to open the dossier.</p>
+
+  <div class="tldr">
+    <p><b>What:</b> Redesign the <b>MUI</b> (Management User Interface) — the web admin console for Wonderline's <b>Loyalty on Demand (LOD)</b> platform. Powers Shell's ~9M-customer program; now going to market.</p>
+    <p><b>Who for:</b> the client's own <b>non-technical marketing &amp; customer-service teams</b> — not Wonderline staff, not end customers.</p>
+    <p><b>The trial:</b> redesign the <b>Campaign / Offer Configuration wizard</b> (Target → Trigger → Validity → Benefit → Offer Details). 3–5 days, to win a longer engagement.</p>
+    <p class="big">Win condition: make their most complex, most-demoed screen feel simple, modern, and self-serve — while keeping an advanced mode for complex Shell offers.</p>
+  </div>
+
+  <div class="facts" style="margin-top:14px">
+    <div class="fact"><div class="k">Scale</div><div class="v">~9M</div><div class="s">Shell active customers*</div></div>
+    <div class="fact"><div class="k">Product age</div><div class="v">~20 yrs</div><div class="s">Java, being productized</div></div>
+    <div class="fact"><div class="k">Complexity</div><div class="v">~50</div><div class="s">sub-pages in the MUI</div></div>
+    <div class="fact"><div class="k">Wizard</div><div class="v">5 steps</div><div class="s">+ live summary + advanced</div></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">*client-stated, unverified.</p>
+
+  <h2><span class="n">01</span> The two users</h2>
+  <div class="cols">
+    <div class="card">
+      <span class="rl">Primary</span>
+      <h3>Marketing Manager (client-side, e.g. Shell)</h3>
+      <ul>
+        <li>Non-technical; wants to launch offers <b>without asking IT</b>.</li>
+        <li>Broad access to campaigns + customer data.</li>
+        <li>Frustrated by jargon, dense menus, and a UI that feels 20 years old in front of prospects.</li>
+        <li>"Good" = a guided, plain-language flow with sensible defaults.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="rl">Secondary</span>
+      <h3>Customer-Service Agent + Power User</h3>
+      <ul>
+        <li>CS: <b>very limited</b> access — only customers + their transactions.</li>
+        <li>Power user / analyst: sets up <b>complex Shell offers</b>, needs the <b>advanced mode</b> kept.</li>
+        <li>Tension to design for: simple by default, powerful on demand.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2><span class="n">02</span> What they want (in their words)</h2>
+  <p>“We want <b>marketing people without IT support</b> to use our product.” · “Simple, but still <b>handling complex environments</b> and systems.” · “The product does <b>not look like 20 years ago</b>.” · Keep an <b>advanced mode</b> “if anybody wants to go into details.”</p>
+
+  <h2><span class="n">03</span> The app loop (campaign creation)</h2>
+  <div class="loop">
+    <span class="n dark"><b>1</b>Target</span><span class="ar">→</span>
+    <span class="n"><b>2</b>Trigger</span><span class="ar">→</span>
+    <span class="n"><b>3</b>Validity</span><span class="ar">→</span>
+    <span class="n"><b>4</b>Benefit</span><span class="ar">→</span>
+    <span class="n"><b>5</b>Offer details</span><span class="ar">→</span>
+    <span class="n dark"><b>✓</b>Create &amp; monitor</span>
+  </div>
+  <p>Structurally sound already: a stepper, a live <b>Offer Summary</b> rail, and a "Go to Advanced Setup" escape hatch. The job is <b>polish + clarity + live feedback</b>, not re-architecture.</p>
+
+  <h2><span class="n">04</span> Competitor whitespace</h2>
+  <table class="cmp">
+    <tr><th>Player</th><th>Deep ops / integration</th><th>Fuel &amp; retail focus</th><th>Simple builder for non-tech</th><th>No-code / AI assist</th></tr>
+    <tr><td>Comarch <span class="mono">(client's top ref)</span></td><td class="yes">Yes</td><td class="part">Broad</td><td class="no">Powerful but complex</td><td class="part">Some</td></tr>
+    <tr><td>Eagle Eye</td><td class="yes">Yes</td><td class="part">Retail-led</td><td class="part">Mixed</td><td class="part">Some</td></tr>
+    <tr><td>Loyalty Methods</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="part">Betting on it (RCX Nexus)</td><td class="yes">AI Promo Architect</td></tr>
+    <tr><td>Talon.One / Antavo</td><td class="part">Rules-led</td><td class="no">General</td><td class="yes">Strong</td><td class="yes">Yes</td></tr>
+    <tr class="rowus"><td>Wonderline / LOD</td><td class="yes">Yes (core strength)</td><td class="yes">Yes</td><td class="part">The opening →</td><td class="no">Not yet</td></tr>
+  </table>
+  <p><b>Whitespace:</b> the unoccupied intersection of <b>deep operational/integration strength</b> + a <b>genuinely simple campaign builder</b>, specialised in fuel &amp; retail. Comarch (their aspiration) is respected but "powerful-yet-complex" — that's precisely LOD's opening. Build the wizard so an <b>AI/plain-language assist layer</b> can bolt on later (where the market is heading).</p>
+
+  <h2><span class="n">05</span> Patterns to steal (per step)</h2>
+  <ul class="steal">
+    <li><b>Live audience reach in Target.</b> Show estimated segment size as you build (sampled at 9M scale). <span class="src">— Klaviyo / Braze live segment size. Their own AI mockup already wants this ("87,220 matching").</span></li>
+    <li><b>AND/OR rule builder with chips</b> for dynamic segments; flat/AND-only for novices, nested OR groups reserved for Advanced. <span class="src">— Braze / query-builder pattern.</span></li>
+    <li><b>Blur-based inline validation</b> (validate on leaving a field, not on every keystroke) — kills the wall-of-red. <span class="src">— Baymard / Material.</span></li>
+    <li><b>Persistent live preview rail</b> — elevate the existing Offer Summary into a signature component. <span class="src">— Mailchimp / Dynamics preview + test.</span></li>
+    <li><b>Progressive disclosure + smart defaults</b> — every step opens with a sane default; complexity appears only when chosen. <span class="src">— tiered-controls pattern.</span></li>
+    <li><b>Basic ↔ Advanced handoff that carries state</b> — opt-in escape hatch, nothing lost. <span class="src">— expert-mode pattern; the "Advanced Setup" button already exists.</span></li>
+  </ul>
+
+  <h2><span class="n">06</span> Brand foundation (derived — verify vs rebrand)</h2>
+  <div class="pal">
+    <div class="sw"><div class="c" style="background:#FFFFFF;border-bottom:1px solid #eee"></div><div class="l"><b>Surface</b><span class="h">#FFFFFF</span></div></div>
+    <div class="sw"><div class="c" style="background:#E11B22"></div><div class="l"><b>Brand red</b><span class="h">CTA / active</span></div></div>
+    <div class="sw"><div class="c" style="background:#141417"></div><div class="l"><b>Ink</b><span class="h">#141417</span></div></div>
+    <div class="sw"><div class="c" style="background:#3A3A40"></div><div class="l"><b>Graphite</b><span class="h">#3A3A40</span></div></div>
+    <div class="sw"><div class="c" style="background:#FCEBEC"></div><div class="l"><b>Selected</b><span class="h">not error!</span></div></div>
+    <div class="sw"><div class="c" style="background:#1E9E62"></div><div class="l"><b>Success</b><span class="h">#1E9E62</span></div></div>
+  </div>
+  <p>White-dominant, red/black/gray. <b>The one rule that changes everything:</b> split brand red (CTA/active only) from a calm "selected" state and a distinct semantic error — so a chosen option stops looking broken. Type: clean enterprise sans (Inter / IBM Plex), tabular figures for tables &amp; points.</p>
+
+  <h2><span class="n">07</span> Design principles</h2>
+  <ol class="princ">
+    <li><b>Clarity over cleverness</b> — if their own team can't explain a control, a marketer can't use it. Plain language wins.</li>
+    <li><b>Calm by default</b> — colour carries meaning, not decoration; red is earned, not everywhere.</li>
+    <li><b>Show the consequence</b> — live reach, live summary, live preview. Never make the user guess.</li>
+    <li><b>Simple surface, powerful underneath</b> — defaults for novices, an honest advanced path for experts.</li>
+    <li><b>Enterprise-credible</b> — every screen should say "handles millions of customers" without shouting it.</li>
+    <li><b>Respect the constraints</b> — Java + limited design system + QuickSight fixed; design what can ship.</li>
+    <li><b>Demo-ready</b> — it has to look great in a prospect conversation, first glance.</li>
+  </ol>
+
+  <div class="dont"><b>Don't:</b> gamify the admin tool (never requested) · use red for selection/validation/CTA all at once · gate audience size behind a modal · rename to internal jargon · rebuild the IA (it's fine) · hard-commit visuals before the rebrand lands · scope-creep past the wizard.</div>
+
+  <div class="foot">Condensed from the full dossier (§00–§07). Quotes verbatim from the 2026-09-09 call; competitor read cites public sources (see §05). "~9M" and "~50 sub-pages" are client-stated / inferred, not independently verified.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next-Call Playbook — Wonderline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F6F8;--surface:#FFFFFF;--border:#E6E6EA;--ink:#141417;--muted:#6B6B73;
+  --primary:#141417;--primary-muted:#3A3A40;--tint:#F0F0F3;
+  --accent:#E11B22;--accent-pale:#FCEBEC;--accent-dark:#B3141B;--danger:#C0392B;--success:#1E9E62;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;font-size:16px}
+.wrap{max-width:880px;margin:0 auto;padding:56px 24px 90px}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-dark);font-weight:600}
+h1{font-size:34px;line-height:1.12;letter-spacing:-.5px;margin:12px 0 6px;color:var(--primary)}
+.lede{font-size:18px;color:var(--muted);max-width:660px;margin:0 0 36px}
+h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:50px 0 16px;padding-bottom:9px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
+h2 .n{font-family:'IBM Plex Mono',monospace;background:var(--accent);color:#fff;border-radius:6px;padding:2px 7px;font-size:11px}
+p{margin:10px 0} b{color:var(--primary-muted)} .mono{font-family:'IBM Plex Mono',monospace}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0}
+.fact{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 15px}
+.fact .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fact .v{font-size:18px;font-weight:600;color:var(--primary);margin-top:3px;line-height:1.2}
+.fact .s{font-size:11.5px;color:var(--muted);margin-top:2px}
+.target{background:var(--primary);color:#EDEEEB;border-radius:20px;padding:28px 32px;position:relative;overflow:hidden;margin:18px 0}
+.target::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(225,27,34,.32),transparent 70%)}
+.target .tag{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:5px 13px;margin-bottom:12px}
+.target h3{font-size:22px;line-height:1.25;margin:0 0 8px;color:#fff;position:relative}
+.target p{color:#C9CCC5;font-size:15.5px;position:relative;margin:6px 0}
+.timeline{margin:8px 0;border-left:2px solid var(--border)}
+.step{position:relative;padding:0 0 20px 34px;margin-left:8px}
+.step::before{content:"";position:absolute;left:-9px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.step .t{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent-dark)}
+.step h4{margin:2px 0 4px;font-size:16.5px;color:var(--primary)}
+.step .say{font-size:13.5px;color:var(--muted);margin-top:5px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px 19px}
+.card h3{margin:0 0 8px;font-size:16px;color:var(--primary)}
+.card.win{border-color:#c6e6d3;background:#f1faf4} .card.win h3{color:var(--success)}
+.card.risk{border-color:#f0cfcf;background:#fdf2f2} .card.risk h3{color:var(--danger)}
+.card ul{margin:6px 0;padding-left:18px} .card li{margin:6px 0;font-size:14px}
+.qlist{list-style:none;padding:0;margin:0}
+.qlist li{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;margin:9px 0;font-size:15px}
+.qlist li .why{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.role{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.role .nm{font-weight:600;color:var(--primary)} .role .rl{font-size:12.5px;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace}
+.role p{font-size:13.5px;color:var(--muted);margin:6px 0 0}
+.callout{background:var(--tint);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:18px 0}
+.foot{margin-top:46px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:600px){.wrap{padding:40px 18px 70px}h1{font-size:27px}.facts{grid-template-columns:1fr 1fr}.cols,.roles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">WONDERLINE · LOD — Next-call playbook</div>
+  <h1>Next call: the designer shows first screens</h1>
+  <p class="lede">The trial's pivotal meeting — first campaign-wizard concepts in front of the buyer <em>and</em> the person who actually knows how the product works.</p>
+
+  <div class="facts">
+    <div class="fact"><div class="k">When</div><div class="v">Wed 16 Sep</div><div class="s">14:00–15:00 (client time)</div></div>
+    <div class="fact"><div class="k">Trial window</div><div class="v">3–5 days</div><div class="s">start 2026-09-16</div></div>
+    <div class="fact"><div class="k">Flow</div><div class="v">Campaign / Offer</div><div class="s">5-step wizard</div></div>
+    <div class="fact"><div class="k">Key guest</div><div class="v">Business analyst</div><div class="s">the domain expert</div></div>
+  </div>
+
+  <div class="target">
+    <span class="tag">◎ Walk out with</span>
+    <h3>Buy-in on the redesign direction + the domain answers that unblock a build-ready campaign wizard.</h3>
+    <p>Two jobs at once: <b style="color:#fff">show</b> first screens that make them feel "this looks like a real product now," and <b style="color:#fff">extract</b> from the analyst the truths their team couldn't answer live (award rule, validity, segmentation).</p>
+  </div>
+
+  <h2><span class="n">01</span> Who's in the room</h2>
+  <div class="roles">
+    <div class="role"><span class="rl">Client · Buyer/Champion</span><div class="nm">Barbara Nyilas — Chief Strategy Officer</div><p>Owns product + strategy; finance→strategy background. Decides, but defers deep product detail to analysts. Sell positioning &amp; market-readiness to her.</p></div>
+    <div class="role"><span class="rl">Client · Domain expert</span><div class="nm">Business analyst (joining)</div><p>Holds the real product knowledge. Your source of truth for the flow. Aim most of your specific questions here.</p></div>
+    <div class="role"><span class="rl">Client · Demoer</span><div class="nm">Alex — sales</div><p>Shows the product to prospects; feels the nav/complexity pain first-hand. New to role, limited prospect feedback yet.</p></div>
+    <div class="role"><span class="rl">Eleken</span><div class="nm">Maksym (Head of Design) · Kateryna (Sales) · you (Designer)</div><p>Maksym frames design credibility; Kate holds the commercial thread; you present the screens and ask the sharp questions.</p></div>
+  </div>
+
+  <h2><span class="n">02</span> Agenda (60 min)</h2>
+  <div class="timeline">
+    <div class="step"><div class="t">0–5 min</div><h4>Warm open + frame</h4><div class="say">Recap the agreed trial task and today's goal: "show a direction, and lock the domain details with your analyst." Set the reframe early — the flow's structure is sound; we're making it feel modern and self-serve.</div></div>
+    <div class="step"><div class="t">5–20 min</div><h4>Present first screens</h4><div class="say">Walk the redesigned wizard. Lead with the two photogenic wins: calm colour system (selected ≠ error) and live audience reach in the Target step. Show the basic view; tease the advanced-mode handoff.</div></div>
+    <div class="step"><div class="t">20–40 min</div><h4>Analyst deep-dive (domain unblock)</h4><div class="say">Turn to the business analyst. Work the open-questions list below. This is the highest-value block — protect the time for it.</div></div>
+    <div class="step"><div class="t">40–52 min</div><h4>React + align</h4><div class="say">Capture feedback on the screens; confirm what's in vs out of trial scope; align on how this ladders into the wider MUI redesign + incoming rebrand.</div></div>
+    <div class="step"><div class="t">52–60 min</div><h4>Next steps + logistics</h4><div class="say">Confirm remaining trial deliverables, any docs/recording still owed, and the following checkpoint. Restate the value they'll have seen.</div></div>
+  </div>
+
+  <h2><span class="n">03</span> Questions to ask the analyst</h2>
+  <ul class="qlist">
+    <li>What exactly is an <b>"Award Rule"</b>, and why does it act like a second segmentation inside Benefit → Point multiplier?<span class="why">Barbara flagged it live [44:28] — "a good question" — and couldn't answer. It shapes the Benefit step design.</span></li>
+    <li>In the wizard, what's the difference between <b>Validity</b> and any price/offer validity?<span class="why">Confusion surfaced at [45:55]. We need to label these unambiguously for marketers.</span></li>
+    <li>What distinguishes a <b>"campaign" from a "test campaign"</b> in the list view?<span class="why">Nobody on the client side knew [47:59]. Affects list + status design.</span></li>
+    <li>Where is <b>dynamic segmentation</b> actually on the roadmap, and which conditions are real today (purchase behaviour, age, points balance)?<span class="why">Barbara: it's "on our roadmap" [40:34]; the AND-builder mockup may be aspirational. Design to what ships.</span></li>
+    <li>Can you share the <b>role/permission matrix</b> (marketing vs customer service vs analyst)?<span class="why">Access is role-based [25:08–26:31]; Barbara offered docs. Confirms who sees the wizard at all.</span></li>
+    <li>Any chance of <b>sandbox/hands-on access</b> to the tool, or is it strictly VPN-only?<span class="why">VPN-only was implied [41:48–42:35]; if truly no access, we lean fully on the walkthrough + analyst recording.</span></li>
+    <li>At 9M customers, is a <b>live/estimated reach count</b> feasible to compute in-flow (even sampled)?<span class="why">De-risks our flagship demo move before we over-promise it.</span></li>
+  </ul>
+
+  <h2><span class="n">04</span> Open items owed</h2>
+  <div class="callout">
+    <p><b>From Wonderline:</b> analyst documentation on the campaign flow; a <b>screen recording of the campaign config narrated by the analyst</b> (Barbara offered this [49:40]); the role/permission docs.</p>
+    <p><b>From Eleken:</b> first redesigned wizard screens for this call; a clear statement of trial scope vs "next phase."</p>
+  </div>
+
+  <h2><span class="n">05</span> Risks vs how we win</h2>
+  <div class="cols">
+    <div class="card risk">
+      <h3>Risks</h3>
+      <ul>
+        <li><b>No hands-on access</b> (VPN-only) — we design partly blind. Mitigate with the walkthrough + analyst recording + sharp questions.</li>
+        <li><b>Domain ambiguity</b> — if the analyst can't clarify award rule/validity, our labels stay guesses.</li>
+        <li><b>Sensitivity about their own work</b> — they built the current screens/AI mockups; "rebuild" framing can sting.</li>
+        <li><b>Rebrand dependency</b> — colours/type may shift under the separate branding partner; don't over-commit visuals.</li>
+        <li><b>Scope creep</b> — nav, advanced mode, dashboard all tempt; the trial is the wizard.</li>
+      </ul>
+    </div>
+    <div class="card win">
+      <h3>How we win</h3>
+      <ul>
+        <li><b>Respect their structure</b> — "your flow is sound; we make it feel as capable as it is." Lowers risk, flatters the work.</li>
+        <li><b>Two demo-ready wins</b> — calm colour + live reach. Instantly legible to a prospect.</li>
+        <li><b>Sharp domain questions</b> — signals we take their complexity seriously (the exact story they're buying).</li>
+        <li><b>Show, don't just tell, the simple↔advanced split</b> — the differentiator vs Comarch's "powerful but complex."</li>
+        <li><b>Tie to positioning</b> — every screen framed as "market-ready, not 20 years old."</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">Sources: dossier §01 Discovery, §02 Project Intelligence, §03 Personas. Times &amp; quotes verbatim from the 2026-09-09 call. Meeting date/time per the call close [50:07–51:50] and the Notion trial-start (2026-09-16).</div>
+</div>
+</body>
+</html>

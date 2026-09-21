@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  /* Neutrals — true grayscale (saturation 0%), same lightness as before.
+     No hue tint at all, so nothing here competes with the brand red. */
+  --surface: #FFFFFF;
+  --surface-sunken: #F9F9F9;
+  --ink: #121212;
+  /* Both shifted darker than before — WCAG AAA (7:1) requires ink-faint to
+     be no lighter than ~#555 on our white/near-white surfaces, which left
+     no room for a visibly lighter ink-soft above it at the old #545454.
+     Contrast checked against both --surface (#FFF) and --surface-sunken
+     (#F9F9F9), the two backgrounds these colors actually render on:
+     ink-soft ≈ 11.9–12.6:1, ink-faint ≈ 7.8–8.2:1. */
+  --ink-soft: #333333;
+  --ink-faint: #4F4F4F;
+  --border: #E6E6E6;
+  /* Interaction-state only — never a resting value. Hover/focus feedback is
+     carried by border color and fill, not by shadows: on a palette this light
+     a 5–10% black shadow is close to invisible, and once cards, inputs, nav
+     rows and buttons all lift slightly, nothing reads as lifted at all.
+     Shadows are kept exclusively for real elevation (drawer, modal, popovers,
+     toast).
+     Two hover mechanisms, chosen by whether the element has its own colored
+     children: --border-hover (stroke) for form controls and PartnerCard
+     (which nests a soft-filled TypeBadge a background hover would wash out);
+     --surface-hover (fill) for buttons, nav rows, menu items, and the
+     customer table row. */
+  --border-hover: #BFBFBF;
+  --surface-hover: #EDEDED;
+
+  /* Primary (brand red) — reserved for primary CTAs and key accents ONLY.
+     Never a fill/background color, and not the logo. */
+  --accent: #E11B22;
+  --accent-hover: #B3141B;
+  --accent-soft: #FEE2E2;
+  --status-active: #1E9E62;
+  --status-active-soft: #ECFDF5;
+  --status-inactive: #6B6B73;
+  --status-inactive-soft: #F1F1F3;
+  --status-pending: #92400E;
+  --status-pending-soft: #FEF3C7;
+  --status-suspended: #DC2626;
+  --status-suspended-soft: #FEE2E2;
+
+  /* Muted, desaturated red for destructive actions ONLY — deliberately
+     distinct from --accent so Delete never visually reads as "the CTA". */
+  --danger: #9B3131;
+  --danger-hover: #862929;
+  --danger-soft: #FBEFEE;
+}
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-surface-hover: var(--surface-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-status-active: var(--status-active);
+  --color-status-active-soft: var(--status-active-soft);
+  --color-status-inactive: var(--status-inactive);
+  --color-status-inactive-soft: var(--status-inactive-soft);
+  --color-status-pending: var(--status-pending);
+  --color-status-pending-soft: var(--status-pending-soft);
+  --color-status-suspended: var(--status-suspended);
+  --color-status-suspended-soft: var(--status-suspended-soft);
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-soft: var(--danger-soft);
+}
+
+body {
+  background: var(--surface-sunken);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes drawer-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.drawer-panel {
+  animation: drawer-slide-in 0.2s ease-out;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-panel {
+  animation: dropdown-fade-in 0.15s ease-out;
+  transform-origin: top;
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.toast-enter {
+  animation: toast-slide-in 0.18s ease-out;
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton-pulse {
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+/* Fully hides the native scrollbar (track, thumb AND any arrow buttons —
+   nothing left for the browser to draw) so <ScrollArea> can render its own
+   JS-driven thumb instead. Hiding the whole native scrollbar is the one
+   cross-browser-reliable approach; selectively hiding just the arrow
+   buttons via ::-webkit-scrollbar-button proved inconsistent. */
+.no-native-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+.no-native-scrollbar::-webkit-scrollbar {
+  display: none; /* Chromium / WebKit */
+  width: 0;
+  height: 0;
+}
