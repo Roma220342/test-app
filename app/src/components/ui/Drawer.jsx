@@ -50,7 +50,9 @@ export default function Drawer({
           <h2 key={`title-${contentKey}`} className="content-swap text-base font-semibold text-ink">
             {title}
           </h2>
-          <div className="flex items-center gap-1">
+          {/* Pulled out by the icon buttons' own inner padding, so the glyphs
+              line up with the content edge rather than their hit areas. */}
+          <div className="-mr-2 flex items-center gap-1">
             {headerActions}
             <button
               type="button"
