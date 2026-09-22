@@ -49,8 +49,6 @@ export default function AssignOfferModal({ open, customer, onClose, onConfirm })
           options={OFFER_OPTIONS}
           placeholder="Select an offer…"
           hasError={hasError}
-          triggerBg="bg-surface"
-          triggerBorder="border-border"
         />
         {hasError && <p className="mt-1 text-xs text-danger">Please select an offer</p>}
       </div>

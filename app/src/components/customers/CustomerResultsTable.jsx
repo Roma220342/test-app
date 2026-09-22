@@ -82,7 +82,7 @@ export default function CustomerResultsTable({
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') onOpenDetail(customer)
                     }}
-                    className="cursor-pointer border-b border-border bg-surface transition-colors last:border-b-0 hover:bg-[#FEF6F6] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink"
+                    className="cursor-pointer border-b border-border bg-surface transition-colors last:border-b-0 hover:bg-[#FFFCFC] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink"
                   >
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">

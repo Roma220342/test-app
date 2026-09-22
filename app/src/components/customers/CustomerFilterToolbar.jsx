@@ -51,8 +51,8 @@ function FilterPopover({ filters, onToggleValue, onClearAll }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className={`inline-flex h-10 items-center gap-2 rounded-lg border bg-surface px-4 text-sm font-medium text-ink transition-colors duration-200 [&>svg:first-child]:-ml-1 ${
-          open ? 'border-ink' : 'border-border hover:border-border-hover'
+        className={`inline-flex h-10 items-center gap-2 rounded-lg border bg-surface px-4 text-sm font-medium text-ink transition-colors duration-200 hover:bg-surface-hover active:bg-surface-hover [&>svg:first-child]:-ml-1 ${
+          open ? 'border-ink' : 'border-border'
         }`}
       >
         <SlidersHorizontal size={16} className="text-ink-faint" />

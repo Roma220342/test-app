@@ -13,9 +13,6 @@ export default function Dropdown({
   hasError = false,
   onBlur,
   className = '',
-  triggerClassName = '',
-  triggerBg = 'bg-surface-sunken',
-  triggerBorder = 'border-transparent',
 }) {
   const [open, setOpen] = useState(false)
   const [highlighted, setHighlighted] = useState(-1)
@@ -98,11 +95,12 @@ export default function Dropdown({
         }}
         onKeyDown={handleTriggerKeyDown}
         onBlur={handleTriggerBlur}
-        className={`flex h-10 w-full items-center justify-between gap-2 rounded-lg border ${triggerBg} px-3 text-left text-sm font-medium text-ink transition-all duration-200 focus:outline-none [&>svg:last-child]:-mr-1 ${
-          hasError
-            ? 'border-danger'
-            : `${triggerBorder} hover:border-border-hover focus:border-ink`
-        } ${triggerClassName}`}
+        // Same treatment as a secondary Button: white with a resting outline,
+        // and a fill step on hover/press. A trigger is pressed, not typed
+        // into, so it gets the button interaction rather than the input one.
+        className={`flex h-10 w-full items-center justify-between gap-2 rounded-lg border bg-surface px-3 text-left text-sm font-medium text-ink transition-all duration-200 hover:bg-surface-hover active:bg-surface-hover focus:outline-none [&>svg:last-child]:-mr-1 ${
+          hasError ? 'border-danger' : open ? 'border-ink' : 'border-border focus:border-ink'
+        }`}
       >
         <span className={`truncate ${selected ? 'text-ink' : 'text-ink-faint'}`}>
           {selected ? selected.label : placeholder}

@@ -3,10 +3,11 @@ const VARIANTS = {
   // Hover darkens the fill: on a saturated red nothing else reads.
   primary:
     'rounded-lg bg-accent text-white hover:bg-accent-hover active:bg-accent-hover disabled:bg-ink-faint disabled:cursor-not-allowed',
-  // Filled instead of outlined, so it stays visible with no resting border.
-  // Hover steps the fill one shade darker — no shadow.
+  // White with a resting outline, matching the Filter control so the two read
+  // as the same class of button. The interaction stays a fill step, like every
+  // other button here — the border only marks the resting shape.
   secondary:
-    'rounded-lg bg-surface-sunken text-ink hover:bg-surface-hover active:bg-surface-hover disabled:text-ink-faint disabled:cursor-not-allowed',
+    'rounded-lg border border-border bg-surface text-ink hover:bg-surface-hover active:bg-surface-hover disabled:text-ink-faint disabled:cursor-not-allowed',
   ghost:
     'rounded-lg bg-transparent text-ink-soft hover:bg-surface-sunken active:bg-surface-sunken disabled:text-ink-faint disabled:cursor-not-allowed',
   // Destructive actions only — a muted, desaturated red, outline-only so it

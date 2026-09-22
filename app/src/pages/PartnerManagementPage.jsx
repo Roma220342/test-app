@@ -110,7 +110,8 @@ export default function PartnerManagementPage() {
   const [sortBy, setSortBy] = useState(urlState.sortBy)
 
   const [detailPartnerId, setDetailPartnerId] = useState(null)
-  const [formState, setFormState] = useState(null) // { mode: 'create' | 'edit', partner? }
+  const [editingPartnerId, setEditingPartnerId] = useState(null)
+  const [formState, setFormState] = useState(null) // create only — edit happens inline in the detail panel
   const [deleteRequest, setDeleteRequest] = useState(null) // { partners: [] }
 
   // Simulated initial fetch — demonstrates the loading state on first paint.
@@ -193,12 +194,17 @@ export default function PartnerManagementPage() {
 
   // --- card row actions ---
   const openDetail = (partner) => setDetailPartnerId(partner.id)
-  const closeDetail = () => setDetailPartnerId(null)
+  const closeDetail = () => {
+    setDetailPartnerId(null)
+    setEditingPartnerId(null)
+  }
 
   const openCreateForm = () => setFormState({ mode: 'create' })
+  // Editing happens inside the detail panel — the panel stays put and its
+  // content cross-fades, instead of a second drawer sliding in over it.
   const openEditForm = (partner) => {
-    setDetailPartnerId(null)
-    setFormState({ mode: 'edit', partner })
+    setDetailPartnerId(partner.id)
+    setEditingPartnerId(partner.id)
   }
   const closeForm = () => setFormState(null)
 
@@ -254,29 +260,29 @@ export default function PartnerManagementPage() {
     // Opens the copy for review immediately instead of leaving the user to
     // hunt for it in the grid — duplicating is almost always followed by
     // "now tweak the name/code/config", so skip straight to that step.
-    setFormState({ mode: 'edit', partner: newPartner })
+    setDetailPartnerId(newPartner.id)
+    setEditingPartnerId(newPartner.id)
   }
 
   const handleFormSubmit = (data) => {
-    if (formState?.mode === 'edit') {
-      setPartners((prev) =>
-        prev.map((p) =>
-          p.id === formState.partner.id ? { ...p, ...data, updatedAt: todayISO() } : p
-        )
-      )
-      addToast(`${data.name} updated`)
-    } else {
-      const newPartner = {
-        id: `p-${Date.now()}`,
-        createdAt: todayISO(),
-        updatedAt: todayISO(),
-        logo: null,
-        ...data,
-      }
-      setPartners((prev) => [newPartner, ...prev])
-      addToast(`${data.name} created`)
+    const newPartner = {
+      id: `p-${Date.now()}`,
+      createdAt: todayISO(),
+      updatedAt: todayISO(),
+      logo: null,
+      ...data,
     }
+    setPartners((prev) => [newPartner, ...prev])
+    addToast(`${data.name} created`)
     setFormState(null)
+  }
+
+  const handleEditSave = (partnerId, data) => {
+    setPartners((prev) =>
+      prev.map((p) => (p.id === partnerId ? { ...p, ...data, updatedAt: todayISO() } : p))
+    )
+    addToast(`${data.name} updated`)
+    setEditingPartnerId(null)
   }
 
   return (
@@ -344,12 +350,14 @@ export default function PartnerManagementPage() {
         onToggleActivate={handleToggleActivate}
         onSuspend={handleSuspend}
         onRequestDelete={requestDelete}
+        existingPartners={partners}
+        isEditing={!!detailPartner && editingPartnerId === detailPartner.id}
+        onCancelEdit={() => setEditingPartnerId(null)}
+        onSubmitEdit={handleEditSave}
       />
 
       <PartnerForm
         open={!!formState}
-        mode={formState?.mode || 'create'}
-        initialPartner={formState?.mode === 'edit' ? formState.partner : null}
         existingPartners={partners}
         onClose={closeForm}
         onSubmit={handleFormSubmit}

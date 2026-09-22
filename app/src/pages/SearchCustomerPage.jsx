@@ -71,7 +71,8 @@ export default function SearchCustomerPage() {
   const [page, setPage] = useState(1)
 
   const [selectedCustomerId, setSelectedCustomerId] = useState(null)
-  const [formState, setFormState] = useState(null) // { mode, customer? }
+  const [editingCustomerId, setEditingCustomerId] = useState(null)
+  const [formState, setFormState] = useState(null) // create only — edit happens inline in the detail panel
   const [pointsTarget, setPointsTarget] = useState(null)
   const [offerTarget, setOfferTarget] = useState(null)
   const [deleteTarget, setDeleteTarget] = useState(null)
@@ -137,24 +138,26 @@ export default function SearchCustomerPage() {
   }
 
   const handleFormSubmit = (data) => {
-    if (formState?.mode === 'edit') {
-      updateCustomer(formState.customer.id, data, logEntry('Profile updated', 'Contact details edited'))
-      addToast(`${data.name} updated`)
-    } else {
-      const newCustomer = {
-        id: `c-${Date.now()}`,
-        ...data,
-        pointsBalance: 0,
-        memberSince: todayISO(),
-        lastActivityAt: todayISO(),
-        transactions: [],
-        offers: [],
-        activityLog: [logEntry('Account created', 'Enrolled manually by staff')],
-      }
-      setCustomers((prev) => [newCustomer, ...prev])
-      addToast(`${data.name} created`)
+    const newCustomer = {
+      id: `c-${Date.now()}`,
+      ...data,
+      pointsBalance: 0,
+      memberSince: todayISO(),
+      lastActivityAt: todayISO(),
+      transactions: [],
+      offers: [],
+      activityLog: [logEntry('Account created', 'Enrolled manually by staff')],
     }
+    setCustomers((prev) => [newCustomer, ...prev])
+    addToast(`${data.name} created`)
     setFormState(null)
+  }
+
+  // Edit happens inline in the detail panel — no separate drawer swap.
+  const handleEditSave = (customerId, data) => {
+    updateCustomer(customerId, data, logEntry('Profile updated', 'Contact details edited'))
+    addToast(`${data.name} updated`)
+    setEditingCustomerId(null)
   }
 
   const handleAdjustPoints = ({ delta, reason }) => {
@@ -267,8 +270,8 @@ export default function SearchCustomerPage() {
 
   const actionHandlers = {
     onEdit: (customer) => {
-      setSelectedCustomerId(null)
-      setFormState({ mode: 'edit', customer })
+      setSelectedCustomerId(customer.id)
+      setEditingCustomerId(customer.id)
     },
     onAdjustPoints: setPointsTarget,
     onAssignOffer: setOfferTarget,
@@ -359,14 +362,20 @@ export default function SearchCustomerPage() {
       <CustomerDetailPanel
         open={!!selectedCustomer}
         customer={selectedCustomer}
-        onClose={() => setSelectedCustomerId(null)}
+        onClose={() => {
+          setSelectedCustomerId(null)
+          setEditingCustomerId(null)
+        }}
         actionHandlers={actionHandlers}
+        existingCustomers={customers}
+        isEditing={!!selectedCustomer && editingCustomerId === selectedCustomer.id}
+        onCancelEdit={() => setEditingCustomerId(null)}
+        onSubmitEdit={handleEditSave}
       />
 
       <CustomerForm
         open={!!formState}
-        mode={formState?.mode || 'create'}
-        initialCustomer={formState?.mode === 'edit' ? formState.customer : null}
+        mode="create"
         existingCustomers={customers}
         onClose={() => setFormState(null)}
         onSubmit={handleFormSubmit}

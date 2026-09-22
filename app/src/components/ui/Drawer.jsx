@@ -8,7 +8,20 @@ const SIZES = {
   lg: 'max-w-2xl',
 }
 
-export default function Drawer({ open, onClose, title, headerActions, children, footer, size = 'md' }) {
+// `contentKey` identifies which content the drawer is currently showing. When
+// it changes the body and footer remount, so the cross-fade replays — that is
+// what makes an in-place mode switch (view → edit) read as the same panel
+// changing rather than a second panel sliding in.
+export default function Drawer({
+  open,
+  onClose,
+  title,
+  headerActions,
+  children,
+  footer,
+  size = 'md',
+  contentKey,
+}) {
   useEffect(() => {
     if (!open) return
     const handleKey = (e) => {
@@ -31,10 +44,12 @@ export default function Drawer({ open, onClose, title, headerActions, children, 
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className={`drawer-panel relative my-3 mr-3 flex h-[calc(100%-1.5rem)] w-full ${SIZES[size]} flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-xl`}
+        className={`drawer-panel relative my-3 mr-3 flex h-[calc(100%-1.5rem)] w-full ${SIZES[size]} flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-xl transition-[max-width] duration-300 ease-out`}
       >
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
-          <h2 className="text-base font-semibold text-ink">{title}</h2>
+          <h2 key={`title-${contentKey}`} className="content-swap text-base font-semibold text-ink">
+            {title}
+          </h2>
           <div className="flex items-center gap-1">
             {headerActions}
             <button
@@ -48,10 +63,14 @@ export default function Drawer({ open, onClose, title, headerActions, children, 
           </div>
         </div>
         <ScrollArea className="min-h-0 flex-1" innerClassName="px-6 py-5">
-          {children}
+          <div key={`body-${contentKey}`} className="content-swap">
+            {children}
+          </div>
         </ScrollArea>
         {footer && (
-          <div className="border-t border-border px-6 py-4">{footer}</div>
+          <div key={`footer-${contentKey}`} className="content-swap border-t border-border px-6 py-4">
+            {footer}
+          </div>
         )}
       </div>
     </div>,
