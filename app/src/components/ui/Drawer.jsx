@@ -56,7 +56,7 @@ export default function Drawer({
               type="button"
               onClick={onClose}
               aria-label="Close panel"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-surface-sunken hover:text-ink"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-surface-hover hover:text-ink"
             >
               <X size={18} />
             </button>

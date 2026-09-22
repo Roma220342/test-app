@@ -49,7 +49,7 @@ export default function CustomerActionsMenu({
   const isAnonymized = !!customer.anonymizedAt
 
   const itemClass =
-    'flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-sunken'
+    'flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-hover'
   const dangerItemClass =
     'flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-danger [&>svg:first-child]:-ml-1 hover:bg-danger-soft'
 
@@ -58,7 +58,7 @@ export default function CustomerActionsMenu({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-surface-sunken hover:text-ink-soft"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-surface-hover hover:text-ink-soft"
         aria-label="Open customer actions"
         aria-haspopup="menu"
         aria-expanded={open}

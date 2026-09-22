@@ -54,7 +54,7 @@ export default function PartnerActionsMenu({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-surface-sunken hover:text-ink-soft"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink-faint transition-colors hover:bg-surface-hover hover:text-ink-soft"
         aria-label="Open partner actions"
         aria-haspopup="menu"
         aria-expanded={open}
@@ -71,7 +71,7 @@ export default function PartnerActionsMenu({
             type="button"
             role="menuitem"
             onClick={(e) => runAction(e, onEdit)}
-            className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-sunken"
+            className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-hover"
           >
             <Pencil size={14} />
             Edit
@@ -80,7 +80,7 @@ export default function PartnerActionsMenu({
             type="button"
             role="menuitem"
             onClick={(e) => runAction(e, onDuplicate)}
-            className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-sunken"
+            className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-hover"
           >
             <Copy size={14} />
             Duplicate
@@ -90,7 +90,7 @@ export default function PartnerActionsMenu({
               type="button"
               role="menuitem"
               onClick={(e) => runAction(e, onToggleActivate)}
-              className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-sunken"
+              className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-hover"
             >
               <StatusIcon size={14} />
               {statusLabel}
@@ -105,7 +105,7 @@ export default function PartnerActionsMenu({
               type="button"
               role="menuitem"
               onClick={(e) => runAction(e, onSuspend)}
-              className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-sunken"
+              className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink [&>svg:first-child]:-ml-1 hover:bg-surface-hover"
             >
               <Ban size={14} />
               Suspend

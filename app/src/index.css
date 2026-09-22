@@ -22,12 +22,20 @@
      Shadows are kept exclusively for real elevation (drawer, modal, popovers,
      toast).
      Two hover mechanisms, split by whether the element is pressed or typed
-     into: --surface-hover (fill) for everything pressable — buttons, the
-     Filter control, dropdown triggers, nav rows, menu items and the customer
-     table row; --border-hover (stroke) for text inputs, and for PartnerCard,
-     which nests a soft-filled TypeBadge a background hover would wash out. */
+     into: --surface-hover (fill) for everything pressable, at one single
+     value — buttons of every variant, icon buttons, the Filter control,
+     dropdown triggers and options, nav rows and menu items all step to the
+     same grey, so no two controls hover differently. --border-hover (stroke)
+     is for text inputs, and pairs with --surface-hover-content on the two
+     content surfaces (partner card, customer row). */
   --border-hover: #BFBFBF;
-  --surface-hover: #EDEDED;
+  --surface-hover: #F0F0F0;
+  /* Hover fill for large content surfaces — the partner card and the customer
+     table row. Far lighter than --surface-hover because the control step is
+     tuned for something button-sized; across a whole card or row it would read
+     as "disabled" rather than "hovered", and it would swallow the soft-filled
+     badges these surfaces carry. */
+  --surface-hover-content: #FDFAFA;
 
   /* Primary (brand red) — reserved for primary CTAs and key accents ONLY.
      Never a fill/background color, and not the logo. */
@@ -62,6 +70,7 @@
   --color-border: var(--border);
   --color-border-hover: var(--border-hover);
   --color-surface-hover: var(--surface-hover);
+  --color-surface-hover-content: var(--surface-hover-content);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);

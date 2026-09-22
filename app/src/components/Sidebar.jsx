@@ -98,7 +98,7 @@ function NavGroup({ label, items, activePage, onNavigate }) {
                   className={
                     isActive
                       ? "flex w-full items-center gap-2.5 rounded-lg border border-transparent bg-surface px-2.5 py-2 text-sm font-normal text-ink transition-colors"
-                      : "flex w-full items-center gap-2.5 rounded-lg border border-transparent px-2.5 py-2 text-sm font-normal text-ink-soft transition-colors hover:bg-surface hover:text-ink"
+                      : "flex w-full items-center gap-2.5 rounded-lg border border-transparent px-2.5 py-2 text-sm font-normal text-ink-soft transition-colors hover:bg-surface-hover hover:text-ink"
                   }
                 >
                   <item.icon
@@ -216,7 +216,7 @@ export default function Sidebar({ activePage, onNavigate }) {
             <button
               type="button"
               onClick={() => {}}
-              className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-normal text-ink-soft transition-colors hover:bg-surface hover:text-ink"
+              className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-normal text-ink-soft transition-colors hover:bg-surface-hover hover:text-ink"
             >
               <Settings className="h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true" />
               Settings
@@ -226,7 +226,7 @@ export default function Sidebar({ activePage, onNavigate }) {
             <button
               type="button"
               onClick={() => {}}
-              className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-normal text-ink-soft transition-colors hover:bg-surface hover:text-ink"
+              className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm font-normal text-ink-soft transition-colors hover:bg-surface-hover hover:text-ink"
             >
               <HelpCircle className="h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true" />
               Help & Support
@@ -237,7 +237,7 @@ export default function Sidebar({ activePage, onNavigate }) {
         <button
           type="button"
           onClick={() => {}}
-          className="flex w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-colors hover:bg-surface"
+          className="flex w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-colors hover:bg-surface-hover"
         >
           <UserAvatarIcon className="h-9 w-9 shrink-0" />
           <div className="min-w-0 flex-1">

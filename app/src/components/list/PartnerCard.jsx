@@ -30,7 +30,7 @@ export default function PartnerCard({
           onOpenDetail(partner)
         }
       }}
-      className="cursor-pointer rounded-xl border border-border bg-surface p-4 transition-colors duration-200 hover:border-border-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="cursor-pointer rounded-xl border border-border bg-surface p-4 transition-colors duration-200 hover:border-border-hover hover:bg-surface-hover-content focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
     >
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">

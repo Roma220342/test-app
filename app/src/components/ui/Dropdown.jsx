@@ -99,7 +99,11 @@ export default function Dropdown({
         // and a fill step on hover/press. A trigger is pressed, not typed
         // into, so it gets the button interaction rather than the input one.
         className={`flex h-10 w-full items-center justify-between gap-2 rounded-lg border bg-surface px-3 text-left text-sm font-medium text-ink transition-all duration-200 hover:bg-surface-hover active:bg-surface-hover focus:outline-none [&>svg:last-child]:-mr-1 ${
-          hasError ? 'border-danger' : open ? 'border-ink' : 'border-border focus:border-ink'
+          hasError
+            ? 'border-danger'
+            : open
+              ? 'border-ink'
+              : 'border-border hover:border-border-hover focus:border-ink'
         }`}
       >
         <span className={`truncate ${selected ? 'text-ink' : 'text-ink-faint'}`}>
@@ -133,7 +137,7 @@ export default function Dropdown({
                   }}
                   className={`flex w-full items-center justify-between gap-2 rounded-md px-4 py-2.5 text-left text-sm transition-colors [&>svg:last-child]:-mr-1 ${
                     isSelected ? 'font-semibold text-ink' : 'font-normal text-ink-soft'
-                  } ${highlighted === i ? 'bg-surface-sunken' : ''}`}
+                  } ${highlighted === i ? 'bg-surface-hover' : ''}`}
                 >
                   <span className="truncate">{opt.label}</span>
                   {isSelected && <Check size={14} className="shrink-0 text-ink" />}
