@@ -111,6 +111,8 @@ export default function PartnerActionsMenu({
               Suspend
             </button>
           )}
+          <div className="my-1 border-t border-border" />
+
           <button
             type="button"
             role="menuitem"
