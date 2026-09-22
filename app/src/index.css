@@ -29,7 +29,7 @@
      is for text inputs, and pairs with --surface-hover-content on the two
      content surfaces (partner card, customer row). */
   --border-hover: #BFBFBF;
-  --surface-hover: #F0F0F0;
+  --surface-hover: #F5F5F5;
   /* Hover fill for large content surfaces — the partner card and the customer
      table row. Far lighter than --surface-hover because the control step is
      tuned for something button-sized; across a whole card or row it would read
