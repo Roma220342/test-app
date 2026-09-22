@@ -114,7 +114,11 @@ export default function PartnerDetailPanel({
   const formattedUpdatedDate = new Date(partner.updatedAt).toLocaleDateString('en-GB', dateFormat)
   const hasLimit = (partner.config?.bmoAmount || '').toLowerCase() !== 'no limit'
 
-  const { label: actionLabel, icon: ActionIcon } = statusAction(partner.status)
+  const { label: actionLabel, next: nextStatus } = statusAction(partner.status)
+  // Deactivating cuts off a live integration — it is the one transition the
+  // page gives an Undo to, so it must not wear the brand-red CTA that
+  // Approve and Activate earn by being purely additive.
+  const isDeactivation = nextStatus === 'Inactive'
 
   // Same menu as the card's kebab — Edit/Duplicate/Delete live in one place
   // now, so this panel and the card can never offer a different set of
@@ -133,7 +137,8 @@ export default function PartnerDetailPanel({
 
   // Delete now lives only in the menu above — a single path to a
   // destructive action instead of two. The footer keeps just the one
-  // primary, non-destructive action for this record's status.
+  // action for this record's status. No icon: it resolves the panel rather
+  // than opening anything, like every other footer button here.
   const footer = isEditing ? (
     <div className="flex items-center justify-end gap-4">
       <Button variant="secondary" onClick={onCancelEdit}>
@@ -145,8 +150,10 @@ export default function PartnerDetailPanel({
     </div>
   ) : (
     <div className="flex items-center justify-end">
-      <Button variant="primary" onClick={() => onToggleActivate(partner)}>
-        <ActionIcon size={16} />
+      <Button
+        variant={isDeactivation ? 'secondary' : 'primary'}
+        onClick={() => onToggleActivate(partner)}
+      >
         {actionLabel}
       </Button>
     </div>
